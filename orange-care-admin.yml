@@ -60,9 +60,6 @@ spring:
     admin:
       client:
         url: http://localhost:8080
-        instance:
-          service-host-type: HOST_NAME
-          prefer-ip: true
       ui:
         theme:
           color: "#4A1420"
