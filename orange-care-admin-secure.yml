@@ -12,5 +12,8 @@ spring:
           metadata:
             user.name: "ADMX"         #These two are needed so that the server
             user.password: "ADMX" #can access the protected client endpoints
+          prefer-ip: true
+          service-host-type: host_name
+        url: localhost:8080
 
 info.tags.security: secured
