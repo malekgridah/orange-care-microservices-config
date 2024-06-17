@@ -52,7 +52,7 @@ info: # Application-Info for the Info-Actuator
 logging: # Logging-File for the Logfile-Actuator
   file:
     name: "hello-world.log"
----------------------
+---
 ###############################################################
 #                 Web Services Configuration                  #
 ###############################################################
