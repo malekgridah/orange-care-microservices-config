@@ -1,3 +1,7 @@
+spring:
+  profiles:
+    active: secure
+
 server:
   port: 8080
 management: # Actuator Configuration
@@ -44,13 +48,15 @@ logging: # Logging-File for the Logfile-Actuator
   file:
     name: "spring-boot-admin.log"
 
+
+
 ---
 spring:
   boot:
     admin:
       ui:
         theme:
-          color: "#4A1420"
+          color: "#f48b33"
           palette:
             50: "#fef1e6"
             100: "#fff2e6"
@@ -62,6 +68,7 @@ spring:
             700: "#f16e00"
             800: "#d96300"
             900: "#000000"
+
 
 ---
 # tag::customization-external-views-simple-link[]
@@ -82,8 +89,3 @@ spring:
           - fr
         favicon: logo.png
         login-icon: assets/img/logo.png
-
----
-spring:
-  profiles:
-    active: secure
