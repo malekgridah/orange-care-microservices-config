@@ -1,8 +1,5 @@
 server:
   port: 8080
-spring:
-  application: # Application-Info for the Info-Actuator
-    name: "@pom.artifactId@"
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
