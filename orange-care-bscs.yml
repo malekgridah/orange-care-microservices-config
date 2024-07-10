@@ -65,7 +65,7 @@ logging: # Logging-File for the Logfile-Actuator
 endpoint:
   service:
     ######  WSI Web Services Endpoint  ######
-    wsi-url: http://192.168.10.93:13001/wsi/services/
+    wsi-url: http://192.168.10.95:13001/wsi/services/
     wsi-user: ADMX
     wsi-pass: ADMX
 
