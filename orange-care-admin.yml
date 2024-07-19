@@ -6,7 +6,7 @@ server:
   port: 0
 management: # Actuator Configuration
   server:
-    port: 0
+    port: 8081
   endpoints:
     web:
       exposure:
