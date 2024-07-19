@@ -1,16 +1,102 @@
 spring:
-  security:
-    user:
-      name: "ADMX"
-      password: "ADMX"
+  profiles:
+    active: secure
+
+server:
+  port: 1508
+management: # Actuator Configuration
+  server:
+    port: 1998
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint: # Health-Actuator
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    env: # Environment-Actuator
+      show-values: always # caution: can reveal passwords
+    configprops: # Configuration-Actuator
+      show-values: always # caution: can reveal passwords
+  info: # Info-Actuator
+    java:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    env:
+      enabled: true
+    git:
+      enabled: true
+info: # Application-Info for the Info-Actuator
+  group: "@pom.groupId@"
+  artifact: "@pom.artifactId@"
+  description: "@pom.description@"
+  version: "@pom.version@"
+  spring-boot: "@spring-boot.version@"
+  spring-boot-admin: "@spring-boot-admin.version@"
+  spring-cloud: "@spring-cloud.version@"
+  # Tags for the Spring Boot Admin UI
+  tags:
+    spring-boot: "@spring-boot.version@"
+    spring-boot-admin: "@spring-boot-admin.version@"
+    spring-cloud: "@spring-cloud.version@"
+logging: # Logging-File for the Logfile-Actuator
+  file:
+    name: "spring-boot-admin.log"
+
+
+
+---
+spring:
   boot:
     admin:
-      client:
-        username: "ADMX"       #These two are needed so that the client
-        password: "ADMX"   #can register at the protected server api
-        instance:
-          metadata:
-            user.name: "ADMX"         #These two are needed so that the server
-            user.password: "ADMX" #can access the protected client endpoints
+      ui:
+        theme:
+          color: "#f48b33"
+          palette:
+            50: "#fef1e6"
+            100: "#fff2e6"
+            200: "#f8b780"
+            300: "#f7a866"
+            400: "#f59a4d"
+            500: "#f48b33"
+            600: "#f27d1a"
+            700: "#f16e00"
+            800: "#d96300"
+            900: "#000000"
 
-info.tags.security: secured
+
+---
+# tag::customization-external-views-simple-link[]
+spring:
+  boot:
+    admin:
+      ui:
+        external-views:
+          - label: "🚀" #<1>
+            url: "http://192.168.10.95:13088/admx_full/login" #<2>
+            order: 2000 #<3>
+            iframe: true
+
+        title: Orange Apps Admin
+        brand: "<img src=\"assets/img/logo.png\"><span>Orange Apps Admin</span>"
+        available-languages:
+          - en
+          - fr
+        favicon: logo.png
+        login-icon: assets/img/logo.png
+---
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
