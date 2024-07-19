@@ -38,11 +38,11 @@ management: # Actuator Configuration
     git:
       enabled: true
 info: # Application-Info for the Info-Actuator
-  group: "@pom.groupId@"
-  artifact: "@pom.artifactId@"
-  description: "@pom.description@"
-  version: "@pom.version@"
-  spring-boot: "@pom.parent.version@"
+  group: "@project.groupId@"
+  artifact: "@project.artifactId@"
+  description: "@project.description@"
+  version: "@project.version@"
+  spring-boot: "@project.parent.version@"
   # Tags for the Spring Boot Admin UI
   tags:
     spring-boot: "@pom.parent.version@"
