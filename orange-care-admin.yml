@@ -3,10 +3,10 @@ spring:
     active: secure
 
 server:
-  port: 1508
+  port: 0
 management: # Actuator Configuration
   server:
-    port: 1998
+    port: 0
   endpoints:
     web:
       exposure:
