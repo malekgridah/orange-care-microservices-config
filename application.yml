@@ -53,7 +53,13 @@ management: # Actuator Configuration
   server:
     port: 8081
 
-    
+---
+
+server:
+  port: 0
+management: # Actuator Configuration
+  server:
+    port: 0
 
 ---
 eureka:
@@ -68,9 +74,3 @@ eureka:
       defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
 spring:
   profiles: default
-  
-server:
-  port: 0
-management: # Actuator Configuration
-  server:
-    port: 0
